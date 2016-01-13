@@ -1,0 +1,47 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 21
+    buildToolsVersion "23.0.2"
+
+    defaultConfig {
+        applicationId "com.sailang.lock"
+        minSdkVersion 8
+        targetSdkVersion 8
+        versionCode 11
+        versionName "1.1"
+    }
+
+    signingConfigs {
+        release {
+            storeFile file('../zhongyili.jks')
+            keyAlias 'zhongyili'
+            keyPassword 'zhongyili'
+            storePassword 'zhongyili'
+        }
+    }
+
+    buildTypes {
+        release{
+            signingConfig signingConfigs.release
+            applicationVariants.all { variant ->
+                variant.outputs.each { output ->
+                    def outputFile = output.outputFile
+//                    def unalignedOutputFile = output.packageApplication.outputFile
+                    if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                        def fileName = "lock_v${defaultConfig.versionName}.apk"
+                        output.outputFile = new File(outputFile.parent, fileName)
+                    }
+//                    if (unalignedOutputFile != null && unalignedOutputFile.name.endsWith('.apk')) {
+//                        def fileName_unaligned = "lock_v${defaultConfig.versionName}_unaligned.apk"
+//                        output.packageApplication.outputFile = new File(unalignedOutputFile.parent, fileName_unaligned)
+//                    }
+                }
+            }
+        }
+    }
+
+    dependencies {
+        compile fileTree(dir: 'libs', include: ['*.jar'])
+    }
+}

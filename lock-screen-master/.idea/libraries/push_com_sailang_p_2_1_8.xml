@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="push-com.sailang.p-2.1.8">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/app/libs/push-com.sailang.p-2.1.8.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
