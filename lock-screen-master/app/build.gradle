@@ -8,8 +8,8 @@ android {
         applicationId "com.sailang.lock"
         minSdkVersion 8
         targetSdkVersion 8
-        versionCode 11
-        versionName "1.1"
+        versionCode 12
+        versionName "1.2"
     }
 
     signingConfigs {
